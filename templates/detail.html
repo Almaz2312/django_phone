@@ -7,17 +7,19 @@
 <body>
 
 <article class="col-6 col-12-xsmall work-item">
-						<img src="{{phone.image.url}}" alt="">
+						<img src="{{phone.image.url}}" alt="" width="400" height="400">
 						<h3>{{phone.title}}</h3>
 						<p>{{phone.description}}</p>
 						<p>{{phone.model}}</p>
 						<p>{{phone.year}}</p>
 					   </article>
 
+
 <form>
-	<a href="{% url 'update' phone.id %}"><input type="button" value="update"></a>
-	<a href="{% url 'delete' phone.id %}"><input type="button" value="delete"></a>
+<a href="{% url 'update' phone.id %}"><input type="button" value="update"></a>
+<a href="{% url 'delete' phone.id %}"><input type="button" value="delete"></a>
 </form>
+
 
 </body>
 </html>

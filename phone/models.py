@@ -13,10 +13,9 @@ class Phone(models.Model):
     description = models.CharField(max_length=255, null=True)
     model = models.ForeignKey(Model, on_delete=models.CASCADE,
                               null=True, blank=True)
-    image = models.ImageField(upload_to='phones')
+    image = models.ImageField(upload_to='phones', null=True)
     year = models.IntegerField
     kgs = models.IntegerField
-    # usd = kgs/90
 
     def __str__(self):
         return f'{self.title}-{self.model}, {self.year}'

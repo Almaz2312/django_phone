@@ -34,6 +34,7 @@
 					  <h2>Recent Work</h2>
 					  <div class="row">
 					  	{% for phone in phones %}
+						  <p>{{phone.id}}</p>
 					   <article class="col-6 col-12-xsmall work-item">
 						<a href="{% url 'detail' phone.id %}" class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{phone.image.url}}" alt=""></a>
 							<h3>{{phone.title}}</h3>
