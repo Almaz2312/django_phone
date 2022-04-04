@@ -7,25 +7,33 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="inner">
+							{% if user.is_authenticated %}
 							<a href="#" class="image avatar"><img src="{% static 'images/avatar.jpg'%}" alt="" /></a>
-							<h1><strong>Welcome new user!</strong>We are happy to see you!<br />
-							responsive site template freebie<br />
-							crafted by <a href="http://html5up.net">HTML5 UP</a>.</h1>
+							<h1><strong>Welcome new user!</strong> {{user.username}}<br />
+							We are glad to help you sell phones<br />
+							crafted by ADshop</a>.</h1>
+							{% else %}
+							<a href="#" class="image avatar"><img src="{% static 'images/avatar.jpg'%}" alt="" /></a>
+							<h1><strong>Register please!</strong><a href="http://127.0.0.1:8000/accounts/register">Register</a>.<br />
+								If you have an account, please <a href="http://127.0.0.1:8000/auth/login">Log in</a>.</h1>
+							{% endif %}
 						</div>
 					</header>
-
+{% if user.is_authenticated %}
 		<!-- Main -->
 			<div id="main">
 
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Ipsum lorem dolor aliquam ante commodo<br />
-							magna sed accumsan arcu neque.</h2>
+							<h2>Мы предоставляем платформу для продажи телефонов</h2>
 						</header>
-						<p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
+						<p>Мы даём возможность любому человеку создать профиль и разместить обьфвление о продаже телефонов. Для создания объявления нажмите на Create</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="{% url 'create' %}" class="button">Create</a></li>
+						</ul>
+						<ul class="actions">
+							<li><a href="{% url 'search' %}" class="button">Search</a></li>
 						</ul>
 					</section>
 
@@ -34,13 +42,13 @@
 					  <h2>Recent Work</h2>
 					  <div class="row">
 					  	{% for phone in phones %}
-						  <p>{{phone.id}}</p>
 					   <article class="col-6 col-12-xsmall work-item">
 						<a href="{% url 'detail' phone.id %}" class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{phone.image.url}}" alt=""></a>
 							<h3>{{phone.title}}</h3>
 						<p>{{phone.description}}</p>
 						<p>{{phone.model}}</p>
-						<p>{{phone.year}}</p>
+						<p>{{phone.kgs}}</p>
+						<p>{{phone.created_date}}</p>
 					   </article>
 					  {% endfor %}
 
@@ -49,7 +57,8 @@
 					   <li><a href="#" class="button">Full Portfolio</a></li>
 					  </ul>
 					 </section>
+{% endif %}
 
 			</div>
 {%endblock content%}
-
+		<!-- Footer -->

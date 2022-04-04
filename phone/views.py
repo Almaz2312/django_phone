@@ -50,3 +50,15 @@ class DeletePhoneView(generic.DeleteView):
     model = Phone
     success_url = '/'
     template_name = 'delete.html'
+
+
+def search(request):
+    form = SearchForm()
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data.get('text')
+            phones = Phone.objects.filter(title__icontains=text)
+            return render(request, 'search_result.html', {'phones': phones})
+
+    return render(request, 'search.html', {'form': form})

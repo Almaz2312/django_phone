@@ -1,0 +1,15 @@
+<h1>Search results:</h1>
+{%for phone in phones%}
+    <p>
+        Phone title: {{phone.title}}
+    </p>
+    <p>
+        Phone model: {{phone.model}}
+    </p>
+    <p>
+        Phone description: {{phone.description}}
+    </p>
+
+    <hr>
+{%endfor%}
+    <a href="{% url 'index' %}" class="button">Main page</a>
